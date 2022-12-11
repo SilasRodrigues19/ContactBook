@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Contact Book</title>
+
+  <link rel="preload" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" as="style">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <link rel="preload" href="./assets/css/style.min.css" as="style">
+  <link rel="stylesheet" href="./assets/css/style.min.css">
+</head>
+
+<body>
+
+  <main>
+
+    <button class="btn-modal" onclick="openModal()">Open modal</button>
+
+    <dialog id="modal" class="modal-main">
+      <div class="modal-row">
+        <div class="modal-col">
+          <label for="">Informe a referência do seu contato</label>
+          <input type="text" name="ref_name" id="" placeholder="Ex:. Família de Ricardo" class="form-control">
+        </div>
+      </div>
+
+      <div class="modal-row grid-row">
+        <div class="modal-col">
+          <label for="">Primeiro nome</label>
+          <input type="text" name="first_name" id="first_name" placeholder="Ex:. João" class="form-control">
+        </div>
+
+        <div class="modal-col">
+          <label for="">Último nome</label>
+          <input type="text" name="last_name" id="last_name" placeholder="Ex:. da Silva" class="form-control">
+        </div>
+      </div>
+
+      <div class="modal-row grid-row">
+        <div class="modal-col">
+          <label for="">Email</label>
+          <input type="email" name="email" id="email" placeholder="Ex:. joaodasilva@domain.com" class="form-control">
+        </div>
+
+        <div class="modal-col">
+          <label for="">Telefone</label>
+          <input type="text" name="phone" id="phone" placeholder="Ex:. (19) 9 9999-9999" class="form-control">
+        </div>
+      </div>
+
+      <div class="modal-row grid-row">
+        <div class="modal-col">
+          <label for="">CEP</label>
+          <input type="text" name="zip_code" id="zip_code" placeholder="Ex:. 99999-999" class="form-control">
+        </div>
+
+        <div class="modal-col">
+          <label for="">Endereço</label>
+          <input type="text" name="address" id="address" placeholder="Ex:. Avenida Maria da Rosa" class="form-control">
+        </div>
+      </div>
+
+      <div class="modal-row grid-row">
+        <div class="modal-col">
+          <label for="">Cidade</label>
+          <input type="text" name="city" id="city" placeholder="Ex:. Augusta" class="form-control">
+        </div>
+
+        <div class="modal-col">
+          <label for="">País</label>
+          <select name="country" id="country">
+            <option value="" selected disabled>Selecione o país</option>
+            <option value="">Brazil</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-row">
+        <div class="modal-col">
+          <label for="">Categoria</label>
+          <select name="labels" id="labels">
+            <option value="Family">Família</option>
+            <option value="Friends">Amigos</option>
+            <option value="Colleagues">Colegas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-row" id="modal-buttons">
+        <button type="submit" id="save-btn">Save</button>
+        <button class="btn-close" onclick="closeModal()">Close</button>
+      </div>
+
+    </dialog>
+
+  </main>
+
+
+
+
+  <script defer src="./assets/js/script.js"></script>
+</body>
+
+</html>
