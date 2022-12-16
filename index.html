@@ -23,82 +23,102 @@
 
   <main>
 
-    <button class="btn-modal" onclick="openModal()">Open modal</button>
+    <div class="modal__background"></div>
 
-    <dialog id="modal" class="modal-main">
-      <div class="modal-row">
-        <div class="modal-col">
-          <label for="">Informe a referência do seu contato</label>
-          <input type="text" name="ref_name" id="" placeholder="Ex:. Família de Ricardo" class="form-control">
+    <button class="modal__open" onclick="openModal()">Open modal</button>
+
+    <dialog id="modal" class="modal">
+
+      <div class="modal__head">
+        <h3 class="modal__title">Adicionar contato</h3>
+        <button type="submit" class="modal__close" onclick="closeModal()">
+          <iconify-icon icon="uit:times-circle" class="modal__close--icon"></iconify-icon>
+        </button>
+      </div>
+
+      <div class="modal__content">
+        <div class="modal__row">
+          <div class="modal__col">
+            <label for="">Informe a referência do seu contato</label>
+            <input type="text" autocomplete="off" name="ref_name" id="" placeholder="Ex:. Família de Ricardo"
+              class="input__item">
+          </div>
+        </div>
+
+        <div class="modal__row grid__row">
+          <div class="modal__col">
+            <label for="">Primeiro nome</label>
+            <input type="text" autocomplete="off" name="first_name" id="first_name" placeholder="Ex:. João"
+              class="input__item">
+          </div>
+
+          <div class="modal__col">
+            <label for="">Último nome</label>
+            <input type="text" autocomplete="off" name="last_name" id="last_name" placeholder="Ex:. da Silva"
+              class="input__item">
+          </div>
+        </div>
+
+        <div class="modal__row grid__row">
+          <div class="modal__col">
+            <label for="">Email</label>
+            <input type="email" autocomplete="off" name="email" id="email" placeholder="Ex:. joaodasilva@domain.com"
+              class="input__item">
+          </div>
+
+          <div class="modal__col">
+            <label for="">Telefone</label>
+            <input type="text" autocomplete="off" name="phone" id="phone" placeholder="Ex:. (19) 9 9999-9999"
+              class="input__item">
+          </div>
+        </div>
+
+        <div class="modal__row grid__row">
+          <div class="modal__col">
+            <label for="">CEP</label>
+            <input type="text" autocomplete="off" name="zip_code" id="zip_code" placeholder="Ex:. 99999-999"
+              class="input__item">
+          </div>
+
+          <div class="modal__col">
+            <label for="">Endereço</label>
+            <input type="text" autocomplete="off" name="address" id="address" placeholder="Ex:. Avenida Maria da Rosa"
+              class="input__item">
+          </div>
+        </div>
+
+        <div class="modal__row grid__row">
+          <div class="modal__col">
+            <label for="">Cidade</label>
+            <input type="text" autocomplete="off" name="city" id="city" placeholder="Ex:. Augusta" class="input__item">
+          </div>
+
+          <div class="modal__col">
+            <label for="">País</label>
+            <select name="country" id="country">
+              <option value="" selected disabled>Selecione o país</option>
+              <option value="">Brazil</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal__row">
+          <div class="modal__col">
+            <label for="">Categoria</label>
+            <select name="labels" id="labels">
+              <option value="Family">Família</option>
+              <option value="Friends">Amigos</option>
+              <option value="Colleagues">Colegas</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal__row footer" id="modal__actions--buttons">
+          <button type="submit" class="footer__save">Save</button>
+          <button class="footer__close" onclick="closeModal()">Fechar</button>
         </div>
       </div>
 
-      <div class="modal-row grid-row">
-        <div class="modal-col">
-          <label for="">Primeiro nome</label>
-          <input type="text" name="first_name" id="first_name" placeholder="Ex:. João" class="form-control">
-        </div>
-
-        <div class="modal-col">
-          <label for="">Último nome</label>
-          <input type="text" name="last_name" id="last_name" placeholder="Ex:. da Silva" class="form-control">
-        </div>
-      </div>
-
-      <div class="modal-row grid-row">
-        <div class="modal-col">
-          <label for="">Email</label>
-          <input type="email" name="email" id="email" placeholder="Ex:. joaodasilva@domain.com" class="form-control">
-        </div>
-
-        <div class="modal-col">
-          <label for="">Telefone</label>
-          <input type="text" name="phone" id="phone" placeholder="Ex:. (19) 9 9999-9999" class="form-control">
-        </div>
-      </div>
-
-      <div class="modal-row grid-row">
-        <div class="modal-col">
-          <label for="">CEP</label>
-          <input type="text" name="zip_code" id="zip_code" placeholder="Ex:. 99999-999" class="form-control">
-        </div>
-
-        <div class="modal-col">
-          <label for="">Endereço</label>
-          <input type="text" name="address" id="address" placeholder="Ex:. Avenida Maria da Rosa" class="form-control">
-        </div>
-      </div>
-
-      <div class="modal-row grid-row">
-        <div class="modal-col">
-          <label for="">Cidade</label>
-          <input type="text" name="city" id="city" placeholder="Ex:. Augusta" class="form-control">
-        </div>
-
-        <div class="modal-col">
-          <label for="">País</label>
-          <select name="country" id="country">
-            <option value="" selected disabled>Selecione o país</option>
-            <option value="">Brazil</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="modal-row">
-        <div class="modal-col">
-          <label for="">Categoria</label>
-          <select name="labels" id="labels">
-            <option value="Family">Família</option>
-            <option value="Friends">Amigos</option>
-            <option value="Colleagues">Colegas</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="modal-row" id="modal-buttons">
-        <button type="submit" id="save-btn">Save</button>
-        <button class="btn-close" onclick="closeModal()">Close</button>
-      </div>
 
     </dialog>
 
@@ -106,7 +126,7 @@
 
 
 
-
+  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
   <script defer src="./assets/js/script.js"></script>
 </body>
 

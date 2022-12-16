@@ -1,5 +1,209 @@
+@import './_functions.scss';
+@import './_mixins.scss';
+@import './_variables.scss';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+  background: $light-grey;
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $dark-blue;
+}
+
+input,
+button {
+  outline: 0;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Modal */
+.modal__background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba($color: #000, $alpha: .2);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 2rem;
+  border: none;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: .6rem;
+  overflow: hidden;
+  /* display: none; */
+  border-radius: 0.5rem;
+  box-shadow: 0 ptr(3) ptr(16) 0 rgba($color: #000, $alpha: .2);
+  width: 60%;
+
+  &::backdrop {
+    background: rgba(1, 1, 1, 0.4);
+  }
+
+  &__content {
+    padding: 1.2rem 2.4rem 1rem 2.4rem;
+  }
+
+  &__head {
+    position: relative;
+    @include justify(space-between);
+    background: $blue;
+    padding: 1.2rem 2.4rem;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  &__close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    @include flexCencerJustify;
+    font-size: 1.4rem;
+    background: rgba($color: #fff, $alpha: .2);
+    color: #fff;
+    height: ptr(30);
+    width: ptr(30);
+    border-radius: 50%;
+    transition: all 200ms ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+  }
+
+  &__title {
+    color: #fff;
+  }
+
+  &__row {
+    margin-bottom: 1.2rem;
+  }
+
+  &__col {
+
+    label {
+      display: block;
+      font-weight: 700;
+      color: $dark-blue;
+      margin-bottom: .6rem;
+    }
+
+    input,
+    select {
+      outline: 0;
+      border: ptr(1) solid rgba($grey, $alpha: .5);
+      border-radius: ptr(3);
+      width: 100%;
+      padding: .5rem .8rem;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+  }
+
+}
+
+.footer {
+
+  @include justify(space-between);
+
+  &__save,
+  &__close {
+    font-size: 1.1rem;
+    color: #fff;
+    padding: .6rem 2rem;
+    border-radius: ptr(4);
+    transition: all 200ms ease;
+
+    &:hover {
+      transform: translateY(ptr(1));
+    }
+
+  }
+
+  &__save {
+    background: $blue;
+    box-shadow: 0 ptr(2) 0 0 $blue-dark;
+    margin-right: .6rem;
+
+    &:hover {
+      box-shadow: 0 ptr(1) 0 0 $blue-dark;
+    }
+
+  }
+
+  &__close {
+
+    background: $light-grey;
+    box-shadow: 0 ptr(2) 0 0 $grey;
+    color: $dark-blue;
+
+    &:hover {
+      box-shadow: 0 ptr(1) 0 0 $grey;
+    }
+
+  }
+
+  &__delete {
+    background: $red;
+    box-shadow: 0 ptr(2) 0 0 $red-dark;
+
+    &:hover {
+      box-shadow: 0 ptr(1) 0 0 $red-dark;
+    }
+
+  }
+
+}
+
+.grid {
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 1.3rem;
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .modal {
+    width: 90%;
+  }
+
+  .grid {
+
+    &__row {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+  }
+
 }

@@ -1,4 +1,4 @@
-const modal = document.querySelector('#modal');
+const modal = document.querySelector('.modal');
 
 const openModal = () => {
   modal.showModal();
