@@ -41,10 +41,9 @@
 
 <hr>
 
-### Home
+### Modal
 
-[![Preview][product-screenshot]](#)
-121
+[![Preview][product-screenshot2]](#)
 
 The screens and features are described below:
 
