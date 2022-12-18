@@ -192,6 +192,143 @@ button {
 }
 
 
+.contact {
+  padding: 1.4rem;
+  margin: 0 auto;
+  max-width: ptr(1200);
+  min-width: ptr(700);
+
+  &__content {
+    background: #fff;
+    padding: 1.6rem;
+    border-radius: ptr(4);
+  }
+
+  &__head {
+    @include flexCencerJustify;
+    padding-top: 1.5rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2.2rem;
+    }
+
+    iconify-icon {
+      color: $blue;
+      margin-right: 1rem;
+      font-size: 2.5rem;
+    }
+
+  }
+
+  &__top {
+    padding: 1rem 0;
+
+    &--button {
+      color: #fff;
+      padding: .8rem;
+      border-radius: ptr(3);
+      transition: all 200ms ease;
+      background: $blue;
+      box-shadow: 0 ptr(2) 0 0 $dark-blue;
+
+      &:hover {
+        transform: translateY(ptr(1));
+        box-shadow: 0 ptr(1) 0 0 $dark-blue;
+      }
+
+    }
+
+  }
+
+  &__list {
+    margin: 1rem 0;
+    min-height: ptr(450);
+  }
+
+  &__table {
+    margin-top: 2rem;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+    &--head {
+      border-bottom: ptr(1) solid #e3e4f1;
+
+      th {
+        padding-bottom: .8rem;
+      }
+
+    }
+
+    &--body {
+
+      tr {
+        cursor: pointer;
+
+        &:hover {
+          background: $blue;
+          transition: all 200ms ease;
+
+          td,
+          span {
+            color: #111;
+          }
+
+          td:nth-child(3) span {
+            background: #fff;
+            color: rgba($color: #000, $alpha: .6);
+          }
+
+        }
+
+      }
+
+      td {
+        padding: 1.5rem 0;
+        color: rgba($color: #000, $alpha: .6);
+        font-weight: 600;
+
+        &:nth-child(1) {
+          padding: 0 1rem 0 .5rem;
+        }
+
+        &:nth-child(2) {
+          font-weight: 800;
+        }
+
+        &:nth-child(3) {
+
+          span {
+            display: inline-block;
+            background: $light-grey;
+            padding: .3rem .6rem;
+            border-radius: ptr(8);
+          }
+
+        }
+
+      }
+
+
+    }
+
+
+  }
+
+  &__name {
+    color: $dark-blue;
+  }
+
+  &__address {
+    font-weight: 600;
+    color: rgba($color: #000, $alpha: .6);
+  }
+
+}
+
+
+
 @media screen and (max-width: 768px) {
 
   .modal {
