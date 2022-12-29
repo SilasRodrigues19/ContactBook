@@ -26,43 +26,46 @@ const countryList = select('#country'),
   addrBookList = select('.contact__table--body'),
   form = select('.form'),
   addBtn = select('.footer__save');
-      
 
-let addrName = firstName = lastName = email = phone = streetAddr = postCode =
-  city = country = labels = '';
+let addrName =
+  (firstName =
+  lastName =
+  email =
+  phone =
+  streetAddr =
+  postCode =
+  city =
+  country =
+  labels =
+    '');
 
 document.addEventListener('DOMContentLoaded', () => {
   loadJSON();
 });
 
-addBtn.addEventListener('click', e => {
-
+addBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
   if (e.target.id === 'modal__save') {
     let isFormValid = getFormData();
-   }
-})
-
+  }
+});
 
 loadJSON = () => {
   fetch('/mock/countries.json')
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       let html = '';
       data.forEach(({ country }) => {
-        
-        html += `
-          <option>${country}</option>
-        `;
+        country === 'Brazil'
+          ? (html += `<option selected>${country}</option>`)
+          : (html += `<option>${country}</option>`);
       });
-      console.log(html);
       countryList.innerHTML = html;
-      console.log(countryList.innerHTML);
-    })
-}
+    });
+};
 
-getFormData = e => {
+getFormData = (e) => {
   let inputValidStatus = [];
 
   /*
@@ -79,8 +82,11 @@ getFormData = e => {
     form.labels.value
   );
   */
-  
-  if (!strRegex.test(form.ref_name.value) || form.ref_name.value.trim().length == 0) {
+
+  if (
+    !strRegex.test(form.ref_name.value) ||
+    form.ref_name.value.trim().length == 0
+  ) {
     isError(form.ref_name);
     inputValidStatus[0] = false;
   } else {
@@ -88,7 +94,10 @@ getFormData = e => {
     inputValidStatus[0] = true;
   }
 
-  if (!strRegex.test(form.first_name.value) || form.first_name.value.trim().length == 0) {
+  if (
+    !strRegex.test(form.first_name.value) ||
+    form.first_name.value.trim().length == 0
+  ) {
     isError(form.first_name);
     inputValidStatus[1] = false;
   } else {
@@ -96,7 +105,10 @@ getFormData = e => {
     inputValidStatus[1] = true;
   }
 
-  if (!strRegex.test(form.last_name.value) || form.last_name.value.trim().length == 0) {
+  if (
+    !strRegex.test(form.last_name.value) ||
+    form.last_name.value.trim().length == 0
+  ) {
     isError(form.last_name);
     inputValidStatus[2] = false;
   } else {
@@ -104,7 +116,6 @@ getFormData = e => {
     inputValidStatus[2] = true;
   }
 
-  
   if (!emailRegex.test(form.email.value)) {
     isError(form.email);
     inputValidStatus[3] = false;
@@ -147,11 +158,21 @@ getFormData = e => {
 
   country = form.country.value;
   labels = form.labels.value;
-  console.log(addrName, firstName, lastName, email, phone, streetAddr, postCode, city, country, labels);
+  console.log(
+    addrName,
+    firstName,
+    lastName,
+    email,
+    phone,
+    streetAddr,
+    postCode,
+    city,
+    country,
+    labels
+  );
   return inputValidStatus.includes(false) ? false : true;
+};
 
-}
-
-isError = inputBox => {
-  inputBox.classList.add('error')
-}
+isError = (inputBox) => {
+  inputBox.classList.add('error');
+};

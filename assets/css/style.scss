@@ -19,7 +19,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: $dark-blue;
+  color: $blue-dark;
 }
 
 input,
@@ -39,7 +39,7 @@ button {
   position: fixed;
   left: 0;
   top: 0;
-  background: rgba($color: #000, $alpha: .2);
+  background: rgba($color: #000, $alpha: 0.2);
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -53,11 +53,11 @@ button {
   border: none;
   transform: translate(-50%, -50%);
   background: #fff;
-  border-radius: .6rem;
+  border-radius: 0.6rem;
   overflow: hidden;
   /* display: none; */
   border-radius: 0.5rem;
-  box-shadow: 0 ptr(3) ptr(16) 0 rgba($color: #000, $alpha: .2);
+  box-shadow: 0 ptr(3) ptr(16) 0 rgba($color: #000, $alpha: 0.2);
   width: 60%;
 
   &::backdrop {
@@ -83,7 +83,7 @@ button {
     top: 1rem;
     @include flexCencerJustify;
     font-size: 1.4rem;
-    background: rgba($color: #fff, $alpha: .2);
+    background: rgba($color: #fff, $alpha: 0.2);
     color: #fff;
     height: ptr(30);
     width: ptr(30);
@@ -93,7 +93,6 @@ button {
     &:hover {
       transform: scale(1.1);
     }
-
   }
 
   &__title {
@@ -105,21 +104,20 @@ button {
   }
 
   &__col {
-
     label {
       display: block;
       font-weight: 700;
-      color: $dark-blue;
-      margin-bottom: .6rem;
+      color: $blue-dark;
+      margin-bottom: 0.6rem;
     }
 
     input,
     select {
       outline: 0;
-      border: ptr(1) solid rgba($grey, $alpha: .5);
+      border: ptr(1) solid rgba($grey, $alpha: 0.5);
       border-radius: ptr(3);
       width: 100%;
-      padding: .5rem .8rem;
+      padding: 0.5rem 0.8rem;
       font-size: 1rem;
       font-family: inherit;
     }
@@ -127,50 +125,43 @@ button {
     .error {
       border: 1px solid #d33c41;
     }
-
   }
-
 }
 
 .footer {
-
   @include justify(space-between);
 
   &__save,
   &__close {
     font-size: 1.1rem;
     color: #fff;
-    padding: .6rem 2rem;
+    padding: 0.6rem 2rem;
     border-radius: ptr(4);
     transition: all 200ms ease;
 
     &:hover {
       transform: translateY(ptr(1));
     }
-
   }
 
   &__save {
     background: $blue;
     box-shadow: 0 ptr(2) 0 0 $blue-dark;
-    margin-right: .6rem;
+    margin-right: 0.6rem;
 
     &:hover {
       box-shadow: 0 ptr(1) 0 0 $blue-dark;
     }
-
   }
 
   &__close {
-
     background: $light-grey;
     box-shadow: 0 ptr(2) 0 0 $grey;
-    color: $dark-blue;
+    color: $blue-dark;
 
     &:hover {
       box-shadow: 0 ptr(1) 0 0 $grey;
     }
-
   }
 
   &__delete {
@@ -180,21 +171,16 @@ button {
     &:hover {
       box-shadow: 0 ptr(1) 0 0 $red-dark;
     }
-
   }
-
 }
 
 .grid {
-
   &__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0 1.3rem;
   }
-
 }
-
 
 .contact {
   padding: 1.4rem;
@@ -222,7 +208,6 @@ button {
       margin-right: 1rem;
       font-size: 2.5rem;
     }
-
   }
 
   &__top {
@@ -230,19 +215,17 @@ button {
 
     &--button {
       color: #fff;
-      padding: .8rem;
+      padding: 0.8rem;
       border-radius: ptr(3);
       transition: all 200ms ease;
       background: $blue;
-      box-shadow: 0 ptr(2) 0 0 $dark-blue;
+      box-shadow: 0 ptr(2) 0 0 $blue-dark;
 
       &:hover {
         transform: translateY(ptr(1));
-        box-shadow: 0 ptr(1) 0 0 $dark-blue;
+        box-shadow: 0 ptr(1) 0 0 $blue-dark;
       }
-
     }
-
   }
 
   &__list {
@@ -260,13 +243,11 @@ button {
       border-bottom: ptr(1) solid #e3e4f1;
 
       th {
-        padding-bottom: .8rem;
+        padding-bottom: 0.8rem;
       }
-
     }
 
     &--body {
-
       tr {
         cursor: pointer;
 
@@ -281,20 +262,18 @@ button {
 
           td:nth-child(3) span {
             background: #fff;
-            color: rgba($color: #000, $alpha: .6);
+            color: rgba($color: #000, $alpha: 0.6);
           }
-
         }
-
       }
 
       td {
         padding: 1.5rem 0;
-        color: rgba($color: #000, $alpha: .6);
+        color: rgba($color: #000, $alpha: 0.6);
         font-weight: 600;
 
         &:nth-child(1) {
-          padding: 0 1rem 0 .5rem;
+          padding: 0 1rem 0 0.5rem;
         }
 
         &:nth-child(2) {
@@ -302,49 +281,35 @@ button {
         }
 
         &:nth-child(3) {
-
           span {
             display: inline-block;
             background: $light-grey;
-            padding: .3rem .6rem;
+            padding: 0.3rem 0.6rem;
             border-radius: ptr(8);
           }
-
         }
-
       }
-
-
     }
-
-
   }
 
   &__name {
-    color: $dark-blue;
+    color: $blue-dark;
   }
 
   &__address {
     font-weight: 600;
-    color: rgba($color: #000, $alpha: .6);
+    color: rgba($color: #000, $alpha: 0.6);
   }
-
 }
 
-
-
 @media screen and (max-width: 768px) {
-
   .modal {
     width: 90%;
   }
 
   .grid {
-
     &__row {
       grid-template-columns: repeat(1, 1fr);
     }
-
   }
-
 }
