@@ -9,7 +9,7 @@
 <samp>
 <p align="center">
   <a href="#">
-    <img src="./public/logo.svg" alt="Logo" width="50">
+    <img src="./logo.svg" alt="Logo" width="50">
   </a>
 
   <h3 align="center">Contact Book</h3>
@@ -106,8 +106,8 @@ Project Link: [https://github.com/SilasRodrigues19/ContactBook](https://github.c
 [issues-url]: https://github.com/SilasRodrigues19/ContactBook/issues
 [license-shield]: https://img.shields.io/github/license/SilasRodrigues19/ContactBook.svg?style=for-the-badge
 [license-url]: https://github.com/SilasRodrigues19/ContactBook/blob/master/LICENSE
-[product-screenshot]: ./public/screenshots/preview.png
-[product-screenshot2]: ./public/screenshots/preview2.png
+[product-screenshot]: ./screenshots/preview.png
+[product-screenshot2]: ./screenshots/preview2.png
 [license-url]: https://github.com/SilasRodrigues19/ContactBook/blob/master/LICENSE
 
 <br><hr>
