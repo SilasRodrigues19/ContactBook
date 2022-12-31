@@ -120,6 +120,11 @@ button {
       padding: 0.5rem 0.8rem;
       font-size: 1rem;
       font-family: inherit;
+
+      &:focus {
+        box-shadow: 0 ptr(1) 0 $blue;
+      }
+
     }
 
     .error {
@@ -132,7 +137,8 @@ button {
   @include justify(space-between);
 
   &__save,
-  &__close {
+  &__close,
+  &__delete {
     font-size: 1.1rem;
     color: #fff;
     padding: 0.6rem 2rem;
@@ -142,9 +148,11 @@ button {
     &:hover {
       transform: translateY(ptr(1));
     }
+
   }
 
-  &__save {
+  &__save,
+  &__update {
     background: $blue;
     box-shadow: 0 ptr(2) 0 0 $blue-dark;
     margin-right: 0.6rem;
@@ -165,10 +173,13 @@ button {
   }
 
   &__delete {
-    background: $red;
-    box-shadow: 0 ptr(2) 0 0 $red-dark;
+    background: $light-grey;
+    box-shadow: 0 ptr(2) 0 0 $grey;
+    color: $grey;
 
     &:hover {
+      background: $red;
+      color: #fff;
       box-shadow: 0 ptr(1) 0 0 $red-dark;
     }
   }
