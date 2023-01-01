@@ -7,6 +7,33 @@ const select = (el, isAll = false) => {
   return el;
 };
 
+// Masks
+handleZipCode = (e) => {
+  let input = e.target;
+  input.value = zipCodeMask(input.value);
+};
+
+zipCodeMask = (val) => {
+  if (!val) return '';
+  val = val.replace(/\D/g, '');
+  val = val.replace(/(\d{5})(\d)/, '$1-$2');
+  return val;
+};
+
+handlePhone = (e) => {
+  let input = e.target;
+  input.value = phoneMask(input.value);
+};
+
+phoneMask = (val) => {
+  if (!val) return '';
+  val = val.replace(/\D/g, '');
+  val = val.replace(/(\d{2})(\d)/, '($1) $2');
+  val = val.replace(/(\d)(\d{4})$/, '$1-$2');
+  return val;
+}; 
+
+
 // Classes
 
 class UserInterface {

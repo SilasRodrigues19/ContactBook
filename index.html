@@ -37,7 +37,7 @@
         <div class="modal__content">
           <div class="modal__row">
             <div class="modal__col">
-              <label for="">Informe a referência do seu contato</label>
+              <label for="">Informe um ponto de referência</label>
               <input type="text" autocomplete="off" name="ref_name" id="ref_name" placeholder="Ex:. Família de Ricardo"
                 class="input__item">
             </div>
@@ -66,16 +66,16 @@
 
             <div class="modal__col">
               <label for="">Telefone</label>
-              <input type="text" autocomplete="off" name="phone" id="phone" placeholder="Ex:. (19) 9 9999-9999"
-                class="input__item">
+              <input type="tel" maxlength="15" oninput="handlePhone(event)" autocomplete="off" name="phone" id="phone"
+                placeholder="Ex:. (19) 9 9999-9999" class="input__item">
             </div>
           </div>
 
           <div class="modal__row grid__row">
             <div class="modal__col">
               <label for="">CEP</label>
-              <input type="text" autocomplete="off" name="zip_code" id="zip_code" placeholder="Ex:. 99999-999"
-                class="input__item">
+              <input oninput="handleZipCode(event)" maxlength="9" type="text" autocomplete="off" name="zip_code"
+                id="zip_code" placeholder="Ex:. 99999-999" class="input__item">
             </div>
 
             <div class="modal__col">
