@@ -1,167 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<head>
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+    <title>Contact Book</title>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="./logo.svg" />
-  <title>Contact Book</title>
+    <link
+      rel="preload"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      as="style"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-  <link rel="preload" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" as="style">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preload" href="./assets/css/style.min.css" as="style" />
+    <link rel="stylesheet" href="./assets/css/style.min.css" />
+  </head>
 
-  <link rel="preload" href="./assets/css/style.min.css" as="style">
-  <link rel="stylesheet" href="./assets/css/style.min.css">
-</head>
-
-<body>
-
-  <main>
-
-    <dialog id="modal" class="modal">
-
-      <div class="modal__head">
-        <h3 class="modal__title">Adicionar contato</h3>
-        <button type="submit" class="modal__close" onclick="closeModal()">
-          <iconify-icon icon="uit:times-circle" class="modal__close--icon"></iconify-icon>
-        </button>
-      </div>
-
-      <form action="" class="form">
-        <div class="modal__content">
-          <div class="modal__row">
-            <div class="modal__col">
-              <label for="">Informe um ponto de referência</label>
-              <input type="text" autocomplete="off" name="ref_name" id="ref_name" placeholder="Ex:. Família de Ricardo"
-                class="input__item">
-            </div>
-          </div>
-
-          <div class="modal__row grid__row">
-            <div class="modal__col">
-              <label for="">Primeiro nome</label>
-              <input type="text" autocomplete="off" name="first_name" id="first_name" placeholder="Ex:. João"
-                class="input__item">
-            </div>
-
-            <div class="modal__col">
-              <label for="">Último nome</label>
-              <input type="text" autocomplete="off" name="last_name" id="last_name" placeholder="Ex:. da Silva"
-                class="input__item">
-            </div>
-          </div>
-
-          <div class="modal__row grid__row">
-            <div class="modal__col">
-              <label for="">Email</label>
-              <input type="email" autocomplete="off" name="email" id="email" placeholder="Ex:. joaodasilva@domain.com"
-                class="input__item">
-            </div>
-
-            <div class="modal__col">
-              <label for="">Telefone</label>
-              <input type="tel" maxlength="15" oninput="handlePhone(event)" autocomplete="off" name="phone" id="phone"
-                placeholder="Ex:. (19) 9 9999-9999" class="input__item">
-            </div>
-          </div>
-
-          <div class="modal__row grid__row">
-            <div class="modal__col">
-              <label for="">CEP</label>
-              <input oninput="handleZipCode(event)" maxlength="9" type="text" autocomplete="off" name="zip_code"
-                id="zip_code" placeholder="Ex:. 99999-999" class="input__item">
-            </div>
-
-            <div class="modal__col">
-              <label for="">Endereço</label>
-              <input type="text" autocomplete="off" name="address" id="address" placeholder="Ex:. Avenida Maria da Rosa"
-                class="input__item">
-            </div>
-          </div>
-
-          <div class="modal__row grid__row">
-            <div class="modal__col">
-              <label for="">Cidade</label>
-              <input type="text" autocomplete="off" name="city" id="city" placeholder="Ex:. Augusta"
-                class="input__item">
-            </div>
-
-            <div class="modal__col">
-              <label for="">País</label>
-              <select name="country" id="country">
-                <option value="">Brazil</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="modal__row">
-            <div class="modal__col">
-              <label for="">Categoria</label>
-              <select name="labels" id="labels">
-                <option value="Family">Família</option>
-                <option value="Friends">Amigos</option>
-                <option value="Colleagues">Colegas</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="modal__row footer" id="modal__actions--buttons">
-            <button type="submit" class="footer__save" id="modal__save">Save</button>
-            <button class="footer__close" onclick="closeModal()">Fechar</button>
-          </div>
-        </div>
-
-      </form>
-
-
-
-    </dialog>
-
-
-    <section class="contact">
-      <div class="contact__content">
-        <div class="contact__head">
-          <iconify-icon icon="mdi:user-box"></iconify-icon>
-          <h2>Contact<span>Book</span></h2>
-        </div>
-
-        <div class="contact__top">
-          <button onclick="openModal()" class="contact__top--button" type="submit">
-            <iconify-icon class="contact__icon" icon="material-symbols:add"></iconify-icon>
-            Adicionar
+  <body>
+    <main>
+      <dialog id="modal" class="modal">
+        <div class="modal__head">
+          <h3 class="modal__title">Adicionar contato</h3>
+          <button type="submit" class="modal__close" onclick="closeModal()">
+            <iconify-icon
+              icon="uit:times-circle"
+              class="modal__close--icon"
+            ></iconify-icon>
           </button>
         </div>
 
-        <div class="contact__list">
-          <table class="contact__table">
-            <thead class="contact__table--head">
-              <th>ID</th>
-              <th>Endereço</th>
-              <th>Categorias</th>
-              <th>Nome</th>
-              <th>Telefone</th>
-            </thead>
-            <tbody class="contact__table--body">
+        <form action="" class="form">
+          <div class="modal__content">
+            <div class="modal__row">
+              <div class="modal__col">
+                <label for="">Informe um ponto de referência</label>
+                <input
+                  type="text"
+                  autocomplete="off"
+                  name="ref_name"
+                  id="ref_name"
+                  placeholder="Ex:. Próximo ao Parque Industrial"
+                  class="input__item"
+                />
+              </div>
+            </div>
 
-            </tbody>
-          </table>
+            <div class="modal__row grid__row">
+              <div class="modal__col">
+                <label for="">Primeiro nome</label>
+                <input
+                  type="text"
+                  autocomplete="off"
+                  name="first_name"
+                  id="first_name"
+                  placeholder="Ex:. João"
+                  class="input__item"
+                />
+              </div>
+
+              <div class="modal__col">
+                <label for="">Último nome</label>
+                <input
+                  type="text"
+                  autocomplete="off"
+                  name="last_name"
+                  id="last_name"
+                  placeholder="Ex:. da Silva"
+                  class="input__item"
+                />
+              </div>
+            </div>
+
+            <div class="modal__row grid__row">
+              <div class="modal__col">
+                <label for="">Email</label>
+                <input
+                  type="email"
+                  autocomplete="off"
+                  name="email"
+                  id="email"
+                  placeholder="Ex:. joaodasilva@domain.com"
+                  class="input__item"
+                />
+              </div>
+
+              <div class="modal__col">
+                <label for="">Telefone</label>
+                <input
+                  type="tel"
+                  maxlength="15"
+                  oninput="handlePhone(event)"
+                  autocomplete="off"
+                  name="phone"
+                  id="phone"
+                  placeholder="Ex:. (19) 9 9999-9999"
+                  class="input__item"
+                />
+              </div>
+            </div>
+
+            <div class="modal__row grid__row">
+              <div class="modal__col" id="cep__col">
+                <label for="">CEP</label>
+                <input
+                  oninput="handleZipCode(event)"
+                  maxlength="9"
+                  type="text"
+                  autocomplete="off"
+                  name="zip_code"
+                  id="zip_code"
+                  placeholder="Ex:. 99999-999"
+                  class="input__item"
+                  onblur="searchZipCode()"
+                />
+              </div>
+
+              <div class="modal__col">
+                <label for="">Endereço</label>
+                <input
+                  type="text"
+                  autocomplete="off"
+                  name="address"
+                  id="address"
+                  placeholder="Ex:. Avenida Maria da Rosa"
+                  class="input__item"
+                />
+              </div>
+            </div>
+
+            <div class="modal__row grid__row">
+              <div class="modal__col">
+                <label for="">Cidade</label>
+                <input
+                  type="text"
+                  autocomplete="off"
+                  name="city"
+                  id="city"
+                  placeholder="Ex:. Augusta"
+                  class="input__item"
+                />
+              </div>
+
+              <div class="modal__col">
+                <label for="">País</label>
+                <select name="country" id="country">
+                  <option value="">Brazil</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="modal__row">
+              <div class="modal__col">
+                <label for="">Categoria</label>
+                <select name="labels" id="labels">
+                  <option value="Familiar">Família</option>
+                  <option value="Amigo">Amigos</option>
+                  <option value="Conhecido">Colegas</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="modal__row footer" id="modal__actions--buttons">
+              <button type="submit" class="footer__save" id="modal__save">
+                Save
+              </button>
+              <button class="footer__close" onclick="closeModal()">
+                Fechar
+              </button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <section class="contact">
+        <div class="contact__content">
+          <div class="contact__head">
+            <iconify-icon icon="mdi:user-box"></iconify-icon>
+            <h2>Contact<span>Book</span></h2>
+          </div>
+
+          <div class="contact__top">
+            <button
+              onclick="openModal()"
+              class="contact__top--button"
+              type="submit"
+            >
+              <iconify-icon
+                class="contact__icon"
+                icon="material-symbols:add"
+              ></iconify-icon>
+              Adicionar
+            </button>
+          </div>
+
+          <div class="contact__list">
+            <table class="contact__table">
+              <thead class="contact__table--head">
+                <th>#</th>
+                <th>Endereço</th>
+                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+              </thead>
+              <tbody class="contact__table--body"></tbody>
+            </table>
+          </div>
         </div>
+      </section>
+    </main>
 
-      </div>
-    </section>
-
-  </main>
-
-
-
-  <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-  <script defer src="./assets/js/script.js"></script>
-</body>
-
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script defer src="./assets/js/script.js"></script>
+  </body>
 </html>

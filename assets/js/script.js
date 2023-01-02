@@ -7,6 +7,19 @@ const select = (el, isAll = false) => {
   return el;
 };
 
+// Regex
+const strRegex = /^[\p{L}\s]*$/u; //* Only letters
+const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+const phoneRegex = /^(\(\d{2}\)|\d{2})? ?\d{5}[- ]?\d{4}$/;
+const cepRegex = /^[0-9]{5}-[0-9]{3}$/;
+const removeNonDigitsRegex = /\D/g;
+const formatAreaCodeRegex = /(\d{2})(\d)/;
+const formatPhoneNumberRegex = /(\d)(\d{4})$/;
+
+const removeNonDigits = (val) => val.replace(removeNonDigitsRegex, '');
+const formatAreaCode = (val) => val.replace(formatAreaCodeRegex, '($1) $2');
+const formatPhoneNumber = (val) => val.replace(formatPhoneNumberRegex, '$1-$2');
+
 // Masks
 handleZipCode = (e) => {
   let input = e.target;
@@ -25,14 +38,31 @@ handlePhone = (e) => {
   input.value = phoneMask(input.value);
 };
 
-phoneMask = (val) => {
+const phoneMask = (val) => {
   if (!val) return '';
-  val = val.replace(/\D/g, '');
-  val = val.replace(/(\d{2})(\d)/, '($1) $2');
-  val = val.replace(/(\d)(\d{4})$/, '$1-$2');
-  return val;
-}; 
 
+  val = removeNonDigits(val);
+  val = formatAreaCode(val);
+  val = formatPhoneNumber(val);
+
+  return val;
+};
+
+searchZipCode = async () => {
+  try {
+    let zipCode = select('#zip_code').value;
+    const response = await fetch(`https://viacep.com.br/ws/${zipCode}/json/`);
+    const { localidade, logradouro } = await response.json();
+
+    if (localidade !== undefined && logradouro !== undefined) {
+      select('#city').value = localidade;
+      select('#address').value = logradouro;
+    }
+    console.log(localidade, logradouro);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 // Classes
 
@@ -66,6 +96,8 @@ class UserInterface {
 
   static showAddressDetails(id) {
     const addresses = Address.getAddresses();
+    const zipCodeInput = select('#zip_code');
+
     addresses.forEach(address => {
       if (address.id == id) {
         select('#ref_name').value = address.addrName;
@@ -74,6 +106,13 @@ class UserInterface {
         select('#email').value = address.email;
         select('#phone').value = address.phone;
         select('#address').value = address.streetAddr;
+
+        if (address.postCode === '00000-000') {
+          disableZipCode(zipCodeInput);
+        } else {
+          enableZipCode(zipCodeInput);
+        }
+        
         select('#zip_code').value = address.postCode;
         select('#city').value = address.city;
         select('#country').value = address.country;
@@ -135,12 +174,6 @@ class Address {
 
 }
 
-
-const strRegex = /^[a-zA-Z\s]*$/; //* Only letters
-const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-const phoneRegex = /^(\(\d{2}\)|\d{2})? ?\d{5}[- ]?\d{4}$/;
-const cepRegex = /^[0-9]{5}-[0-9]{3}$/;
-
 const modal = select('.modal');
 
 const openModal = () => {
@@ -160,6 +193,20 @@ const clearConsole = delay => {
       }, delay);
     }
   });
+};
+
+const disableZipCode = (zipCode) => {
+  zipCode.style.cursor = 'not-allowed';
+  zipCode.setAttribute('placeholder', 'N/A');
+  zipCode.value = '00000-000';
+  zipCode.disabled = true;
+};
+
+const enableZipCode = (zipCode) => {
+  zipCode.style.cursor = 'auto';
+  zipCode.setAttribute('placeholder', 'Ex:. 99999-999');
+  zipCode.value = '';
+  zipCode.disabled = false;
 };
 
 
@@ -213,7 +260,7 @@ addBtn.addEventListener('click', (e) => {
   }
 });
 
-addrBookList.addEventListener('click', e => {
+addrBookList.addEventListener('dblclick', (e) => {
   openModal();
   let trElement;
 
@@ -221,13 +268,12 @@ addrBookList.addEventListener('click', e => {
     trElement = e.target.parentElement.parentElement;
   }
 
-  if(e.target.parentElement.tagName == 'TR') {
+  if (e.target.parentElement.tagName == 'TR') {
     trElement = e.target.parentElement;
   }
 
   let viewID = trElement.getAttribute('data-id');
   UserInterface.showAddressDetails(viewID);
-
 });
 
 loadCountries = () => {
@@ -247,6 +293,24 @@ loadCountries = () => {
 
     });
 };
+
+countryList.addEventListener('change', (e) => {
+  const isBrazilSelected = e.target.value === 'Brazil';
+
+  const cepCol = select('#cep__col');
+  const zipCode = select('#zip_code');
+
+ if (!isBrazilSelected) {
+   cepCol.style.display = 'none';
+   disableZipCode(zipCode);
+ } else {
+   cepCol.style.display = 'block';
+   enableZipCode(zipCode);
+ }
+
+
+});
+
 
 getFormData = (e) => {
   let inputValidStatus = [];
