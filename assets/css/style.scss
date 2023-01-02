@@ -19,7 +19,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: $blue-dark;
+  color: $dark-blue;
 }
 
 input,
@@ -34,18 +34,6 @@ button {
   cursor: pointer;
 }
 
-/* Modal */
-.modal__background {
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: rgba($color: #000, $alpha: 0.2);
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  display: none;
-}
-
 .modal {
   position: fixed;
   left: 50%;
@@ -57,7 +45,7 @@ button {
   overflow: hidden;
   /* display: none; */
   border-radius: 0.5rem;
-  box-shadow: 0 ptr(3) ptr(16) 0 rgba($color: #000, $alpha: 0.2);
+  box-shadow: 0 ptr(3) ptr(16) 0 rgba($color: $dark-grey, $alpha: 0.2);
   width: 60%;
 
   &::backdrop {
@@ -107,7 +95,7 @@ button {
     label {
       display: block;
       font-weight: 700;
-      color: $blue-dark;
+      color: $dark-blue;
       margin-bottom: 0.6rem;
     }
 
@@ -116,6 +104,7 @@ button {
       outline: 0;
       border: ptr(1) solid rgba($grey, $alpha: 0.5);
       border-radius: ptr(3);
+      color: $dark-grey;
       width: 100%;
       padding: 0.5rem 0.8rem;
       font-size: 1rem;
@@ -154,18 +143,18 @@ button {
   &__save,
   &__update {
     background: $blue;
-    box-shadow: 0 ptr(2) 0 0 $blue-dark;
+    box-shadow: 0 ptr(2) 0 0 $dark-blue;
     margin-right: 0.6rem;
 
     &:hover {
-      box-shadow: 0 ptr(1) 0 0 $blue-dark;
+      box-shadow: 0 ptr(1) 0 0 $dark-blue;
     }
   }
 
   &__close {
     background: $light-grey;
     box-shadow: 0 ptr(2) 0 0 $grey;
-    color: $blue-dark;
+    color: $dark-blue;
 
     &:hover {
       box-shadow: 0 ptr(1) 0 0 $grey;
@@ -180,9 +169,13 @@ button {
     &:hover {
       background: $red;
       color: #fff;
-      box-shadow: 0 ptr(1) 0 0 $red-dark;
+      box-shadow: 0 ptr(1) 0 0 $dark-red;
     }
   }
+}
+
+.none {
+  display: none;
 }
 
 .grid {
@@ -230,11 +223,11 @@ button {
       border-radius: ptr(3);
       transition: all 200ms ease;
       background: $blue;
-      box-shadow: 0 ptr(2) 0 0 $blue-dark;
+      box-shadow: 0 ptr(2) 0 0 $dark-blue;
 
       &:hover {
         transform: translateY(ptr(1));
-        box-shadow: 0 ptr(1) 0 0 $blue-dark;
+        box-shadow: 0 ptr(1) 0 0 $dark-blue;
       }
     }
   }
@@ -254,6 +247,7 @@ button {
       border-bottom: ptr(1) solid #e3e4f1;
 
       th {
+        color: $dark-grey;
         padding-bottom: 0.8rem;
       }
     }
@@ -273,14 +267,14 @@ button {
 
           td:nth-child(3) span {
             background: #fff;
-            color: rgba($color: #000, $alpha: 0.6);
+            color: rgba($color: $dark-grey, $alpha: 0.6);
           }
         }
       }
 
       td {
         padding: 1.5rem 0;
-        color: rgba($color: #000, $alpha: 0.6);
+        color: rgba($color: $dark-grey, $alpha: 0.6);
         font-weight: 600;
 
         &:nth-child(1) {
@@ -304,12 +298,12 @@ button {
   }
 
   &__name {
-    color: $blue-dark;
+    color: $dark-blue;
   }
 
   &__address {
     font-weight: 600;
-    color: rgba($color: #000, $alpha: 0.6);
+    color: rgba($color: $dark-grey, $alpha: 0.6);
   }
 }
 
