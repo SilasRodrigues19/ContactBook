@@ -48,6 +48,10 @@ const phoneMask = (val) => {
   return val;
 };
 
+phoneFormat = val => "(" + val.substring(0, 2) + ") " + val.substring(2, 7) + "-" + val.substring(7, 11);
+
+
+
 searchZipCode = async () => {
   try {
     let zipCode = select('#zip_code').value;
@@ -88,7 +92,7 @@ class UserInterface {
         <span>${address.labels}</span>
       </td>
       <td>${address.firstName + ' ' + address.lastName}</td>
-      <td>${address.phone}</td>
+      <td><a href="https://wa.me/${address.phone}" target="_blank" rel=”noopener noreferer”>${phoneFormat(address.phone)}</a></td>
     `;
 
     addrBookList.appendChild(tableRow);
@@ -104,7 +108,7 @@ class UserInterface {
         select('#first_name').value = address.firstName;
         select('#last_name').value = address.lastName;
         select('#email').value = address.email;
-        select('#phone').value = address.phone;
+        select('#phone').value = phoneFormat(address.phone);
         select('#address').value = address.streetAddr;
 
         if (address.postCode === '00000-000') {
