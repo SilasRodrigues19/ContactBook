@@ -92,7 +92,7 @@ class UserInterface {
         <span>${address.labels}</span>
       </td>
       <td>${address.firstName + ' ' + address.lastName}</td>
-      <td><a href="https://wa.me/${address.phone}" target="_blank" rel=”noopener noreferer”>${address.phone}</a></td>
+      <td><a href="https://wa.me/${address.phone.replace(/[^0-9]/g, "")}" target="_blank" rel=”noopener noreferer”>${address.phone}</a></td>
     `;
 
     addrBookList.appendChild(tableRow);
@@ -123,8 +123,8 @@ class UserInterface {
         select('#labels').value = address.labels;
         select('.modal__title').innerHTML = "Editar contato";
         select('#modal__actions--buttons').innerHTML = `
-          <button type="submit" class="footer__save" data-id="${id}">Atualizar</button>
-          <button class="footer__delete" onclick="closeModal()">Excluir</button>
+          <button onclick="handleUpdate(${id}, event)" type="submit" class="footer__save" data-id="${id}">Atualizar</button>
+          <button onclick="handleDelete(${id})" type="button" class="footer__delete" data-id="${id}">Excluir</button>
         `;
       }
     })
@@ -174,6 +174,42 @@ class Address {
     const addresses = Address.getAddresses();
     addresses.push(address);
     localStorage.setItem('addresses', JSON.stringify(addresses));
+  }
+
+  static deleteAddress(id) {
+    const addresses = Address.getAddresses();
+    addresses.forEach((address, index) => {
+      if (address.id == id) {
+        addresses.splice(index, 1);
+      }
+    });
+    localStorage.setItem('addresses', JSON.stringify(addresses));
+    form.reset();
+    closeModal();
+    addrBookList.innerHTML = '';
+    UserInterface.showAddressesList();
+  }
+
+  static updateAddress(item) {
+    const addresses = Address.getAddresses();
+
+    addresses.forEach(address => {
+      if (address.id == item.id) {
+        address.addrName = item.addrName;
+        address.firstName = item.firstName;
+        address.lastName = item.lastName;
+        address.email = item.email;
+        address.phone = item.phone;
+        address.streetAddr = item.streetAddr;
+        address.postCode = item.postCode;
+        address.city = item.city;
+        address.country = item.country;
+        address.labels = item.labels;
+      }
+    });
+    localStorage.setItem('addresses', JSON.stringify(addresses));
+    addrBookList.innerHTML = '';
+    UserInterface.showAddressesList();
   }
 
 }
@@ -279,6 +315,31 @@ addrBookList.addEventListener('dblclick', (e) => {
   let viewID = trElement.getAttribute('data-id');
   UserInterface.showAddressDetails(viewID);
 });
+
+
+handleDelete = id => {
+  const dataId = id
+  Address.deleteAddress(dataId);
+}
+
+handleUpdate = (id, event) => {
+  event.preventDefault();
+  let isFormValid = getFormData();
+
+  if (!isFormValid) {
+    form.select('input', true).forEach(input => {
+      setTimeout(() => {
+        input.classList.remove('error');
+      }, 1500);
+    })
+  } else {
+    const addressItem = new Address(id, addrName, firstName, lastName, email, phone, streetAddr, postCode, city, country, labels);
+    Address.updateAddress(addressItem);
+    closeModal();
+    form.reset();
+  }
+    
+};
 
 loadCountries = () => {
   fetch('/mock/countries.json')
@@ -409,18 +470,7 @@ getFormData = (e) => {
 
   country = form.country.value;
   labels = form.labels.value;
-  console.log(
-    addrName,
-    firstName,
-    lastName,
-    email,
-    phone,
-    streetAddr,
-    postCode,
-    city,
-    country,
-    labels
-  );
+
   return inputValidStatus.includes(false) ? false : true;
 };
 
