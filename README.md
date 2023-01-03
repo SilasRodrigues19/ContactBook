@@ -8,7 +8,7 @@
 <br />
 <samp>
 <p align="center">
-  <a href="#">
+  <a href="https://contactbook-two.vercel.app/">
     <img src="./logo.svg" alt="Logo" width="50">
   </a>
 
@@ -41,19 +41,31 @@
 
 <hr>
 
-### Modal
+### Add brazilian contact
 
-[![Preview][product-screenshot2]](#)
+[![Preview][product-screenshot]](https://contactbook-two.vercel.app/)
+
+### Add non brazilian contact
+
+[![Preview][product-screenshot2]](https://contactbook-two.vercel.app/)
+
+### Contact List
+
+[![Preview][product-screenshot3]](https://contactbook-two.vercel.app/)
 
 The screens and features are described below:
 
-- **Home:** not yet implemented.
+- **Contact List:** list all contacts, double click to open modal with information to edit or delete.
 
-- **Modal:** not yet implemented.
+- **Modal:** fill in the contact information, if you select a country other than Brazil the zip code (CEP) field is excluded
 
 ## Built With
 
 Technologies used in the project.
+
+### API
+
+Used [Via CEP](https://viacep.com.br/) to fetch address data.
 
 ### Tools
 
@@ -108,6 +120,7 @@ Project Link: [https://github.com/SilasRodrigues19/ContactBook](https://github.c
 [license-url]: https://github.com/SilasRodrigues19/ContactBook/blob/master/LICENSE
 [product-screenshot]: ./screenshots/preview.png
 [product-screenshot2]: ./screenshots/preview2.png
+[product-screenshot3]: ./screenshots/preview3.png
 [license-url]: https://github.com/SilasRodrigues19/ContactBook/blob/master/LICENSE
 
 <br><hr>
