@@ -92,7 +92,7 @@ class UserInterface {
         <span>${address.labels}</span>
       </td>
       <td>${address.firstName + ' ' + address.lastName}</td>
-      <td><a href="https://wa.me/${address.phone}" target="_blank" rel=”noopener noreferer”>${phoneFormat(address.phone)}</a></td>
+      <td><a href="https://wa.me/${address.phone}" target="_blank" rel=”noopener noreferer”>${address.phone}</a></td>
     `;
 
     addrBookList.appendChild(tableRow);
@@ -108,7 +108,7 @@ class UserInterface {
         select('#first_name').value = address.firstName;
         select('#last_name').value = address.lastName;
         select('#email').value = address.email;
-        select('#phone').value = phoneFormat(address.phone);
+        select('#phone').value = address.phone;
         select('#address').value = address.streetAddr;
 
         if (address.postCode === '00000-000') {
