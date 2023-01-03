@@ -219,6 +219,10 @@ a {
   max-width: ptr(1200);
   min-width: ptr(700);
 
+  &__icon {
+    margin-bottom: -.1rem;
+  }
+
   &__content {
     background: #fff;
     padding: 1.6rem;
