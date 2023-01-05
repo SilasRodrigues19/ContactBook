@@ -319,6 +319,7 @@ addrBookList.addEventListener('dblclick', (e) => {
 
 handleDelete = id => {
   const dataId = id
+  closeModal();
   swal.fire({
       title: 'Você tem certeza?',
       text: 'Essa ação não poderá ser desfeita!',
@@ -327,14 +328,14 @@ handleDelete = id => {
       confirmButtonText: 'Sim, excluir!',
       cancelButtonText: 'Cancelar',
     })
-    .then(function (result) {
+    .then(result => {
+      openModal();
       if (result.value) {
-        // código a ser executado se o usuário clicar em "Sim, excluir!"
         Address.deleteAddress(dataId);
       }
     });
-
 }
+
 
 handleUpdate = (id, event) => {
   event.preventDefault();
