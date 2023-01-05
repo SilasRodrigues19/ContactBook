@@ -123,7 +123,7 @@ class UserInterface {
         select('#labels').value = address.labels;
         select('.modal__title').innerHTML = "Editar contato";
         select('#modal__actions--buttons').innerHTML = `
-          <button onclick="handleUpdate(${id}, event)" type="submit" class="footer__save" data-id="${id}">Atualizar</button>
+          <button onclick="handleUpdate(${id}, event)" type="submit" class="footer__update" data-id="${id}">Atualizar</button>
           <button onclick="handleDelete(${id})" type="button" class="footer__delete" data-id="${id}">Excluir</button>
         `;
       }
@@ -214,6 +214,12 @@ class Address {
 
 }
 
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+});
+
 const modal = select('.modal');
 
 const openModal = () => {
@@ -222,7 +228,9 @@ const openModal = () => {
 
 const closeModal = () => {
   modal.close();
+  location.reload();
 };
+
 
 const clearConsole = delay => {
   document.addEventListener('keydown', e => {
@@ -273,7 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
   clearConsole(5000);
 });
 
-addBtn.addEventListener('click', (e) => {
+
+addBtn.addEventListener('click', e => {
+  form.reset();
   e.preventDefault();
 
   if (e.target.id === 'modal__save') {

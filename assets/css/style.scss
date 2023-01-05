@@ -153,6 +153,7 @@ a {
   @include justify(space-between);
 
   &__save,
+  &__update,
   &__close,
   &__delete {
     font-size: 1.1rem;
@@ -246,6 +247,8 @@ a {
   }
 
   &__top {
+    display: flex;
+    justify-content: space-between;
     padding: 1rem 0;
 
     &--button {
