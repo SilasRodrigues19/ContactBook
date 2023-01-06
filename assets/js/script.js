@@ -228,7 +228,6 @@ const openModal = () => {
 
 const closeModal = () => {
   modal.close();
-  location.reload();
 };
 
 
@@ -362,6 +361,7 @@ handleUpdate = (id, event) => {
     Address.updateAddress(addressItem);
     closeModal();
     form.reset();
+    location.reload();
   }
     
 };
