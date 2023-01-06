@@ -132,7 +132,7 @@
             <iconify-icon class="contact__icon" icon="material-symbols:add"></iconify-icon>
             Adicionar
           </button>
-          <button class="contact__top--button" type="button">
+          <button onclick="exportToExcel()" class="contact__top--button" type="button">
             <iconify-icon class="contact__icon" icon="ic:outline-file-download"></iconify-icon>
             Exportar
           </button>
@@ -156,8 +156,10 @@
 
   <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+  <script src="https://unpkg.com/xlsx@0.16.6/dist/xlsx.full.min.js"></script>
+  <script defer src="./assets/js/export.js"></script>
   <script defer src="./assets/js/script.js"></script>
+
 </body>
 
 </html>
