@@ -309,14 +309,23 @@ addBtn.addEventListener('click', e => {
 });
 
 let addContact = select('#addContact');
+let reloaded = false;
 
 addContact.addEventListener('click', () => {
-  form.reset();
-  select('#modal__actions--buttons').innerHTML = `
-      <button type="submit" class="footer__save" id="modal__save">Salvar</button>
-      <button class="footer__close" onclick="closeModal()">Fechar</button>
-    `;
-})
+
+  if (!reloaded) {
+    sessionStorage.setItem('openModal', 'true');
+    location.reload();
+    reloaded = true;
+    addContact.removeEventListener('click', arguments.callee);
+  }
+
+});
+
+if (sessionStorage.getItem('openModal') === 'true') {
+  openModal();
+  sessionStorage.removeItem('openModal');
+}
 
 addrBookList.addEventListener('dblclick', (e) => {
   openModal();
