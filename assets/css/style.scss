@@ -8,6 +8,20 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: .7rem;
+}
+
+/* Add a thumb */
+::-webkit-scrollbar-thumb {
+  background: $blue;
+
+  &:hover {
+    background: $dark-blue;
+  }
+
+}
+
 body {
   min-height: 100vh;
   height: 100%;
@@ -32,6 +46,11 @@ button {
 
 button {
   cursor: pointer;
+}
+
+.no__contacts {
+  color: #777;
+  margin: 1rem 0;
 }
 
 a {
@@ -149,6 +168,39 @@ a {
   }
 }
 
+.pushable {
+  background: $dark-blue;
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:hover &__front {
+    transform: translateY(-6px);
+  }
+
+  &:active &__ront {
+    transform: translateY(-2px);
+  }
+
+  &__front {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: $blue;
+    color: white;
+    transform: translateY(-4px);
+    will-change: transform;
+    transition: transform 250ms;
+  }
+
+}
+
 .footer {
   @include justify(space-between);
 
@@ -231,11 +283,12 @@ a {
   }
 
   &__head {
-    @include flexCencerJustify;
+    @include flexCencerJustify(flex-start);
     padding-top: 1.5rem;
     margin-bottom: 2rem;
 
     h2 {
+      text-align: left;
       font-size: 2.2rem;
     }
 

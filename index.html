@@ -15,6 +15,7 @@
 
   <link rel="preload" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" as="style" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
 
   <link rel="preload" href="./assets/css/style.min.css" as="style" />
   <link rel="stylesheet" href="./assets/css/style.min.css" />
@@ -101,7 +102,7 @@
             <div class="modal__col">
               <label for="">Categoria</label>
               <select name="labels" id="labels">
-                <option value="Familiar">Família</option>
+                <option value="Família">Família</option>
                 <option value="Amigo">Amigos</option>
                 <option value="Conhecido">Colegas</option>
               </select>
@@ -123,29 +124,31 @@
     <section class="contact">
       <div class="contact__content">
         <div class="contact__head">
-          <iconify-icon icon="mdi:user-box"></iconify-icon>
           <h2>Contact<span>Book</span></h2>
         </div>
 
         <div class="contact__top">
-          <button onclick="openModal()" id="addContact" class="contact__top--button" type="submit">
-            <iconify-icon class="contact__icon" icon="material-symbols:add"></iconify-icon>
-            Adicionar
+
+          <button onclick="openModal()" class="pushable" id="addContact" type="submit">
+            <span class="pushable__front">
+              <iconify-icon class="contact__icon" icon="material-symbols:add"></iconify-icon>
+              Adicionar
+            </span>
           </button>
-          <button onclick="exportToExcel()" class="contact__top--button" type="button">
-            <iconify-icon class="contact__icon" icon="ic:outline-file-download"></iconify-icon>
-            Exportar
+
+
+          <button onclick="exportToExcel()" class="pushable" type="button">
+            <span class="pushable__front">
+              <iconify-icon class="contact__icon" icon="ic:outline-file-download"></iconify-icon>
+              Exportar
+            </span>
           </button>
         </div>
 
         <div class="contact__list">
           <table class="contact__table">
             <thead class="contact__table--head">
-              <th>#</th>
-              <th>Endereço</th>
-              <th>Categoria</th>
-              <th>Nome</th>
-              <th>Telefone</th>
+
             </thead>
             <tbody class="contact__table--body"></tbody>
           </table>
@@ -157,6 +160,7 @@
   <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://unpkg.com/xlsx@0.16.6/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
   <script defer src="./assets/js/export.js"></script>
   <script defer src="./assets/js/script.js"></script>
 
