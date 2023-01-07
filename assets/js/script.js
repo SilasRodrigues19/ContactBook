@@ -74,6 +74,8 @@ class UserInterface {
   static showAddressesList() {
     const addresses = Address.getAddresses();
 
+    tableThead.innerHTML = "<p class='no__contacts'>Não há contatos a serem exibidos</p>";
+
     addresses.forEach((address) => UserInterface.addAddressList(address));
   }
 
@@ -95,6 +97,13 @@ class UserInterface {
       <td><a href="https://wa.me/${address.phone.replace(/[^0-9]/g, "")}" target="_blank" rel=”noopener noreferer”>${address.phone}</a></td>
     `;
 
+    tableThead.innerHTML = `
+      <th>#</th>
+      <th>Endereço</th>
+      <th>Categoria</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+    `;
     addrBookList.appendChild(tableRow);
   }
 
@@ -187,6 +196,7 @@ class Address {
     form.reset();
     closeModal();
     addrBookList.innerHTML = '';
+    tableThead.innerHTML = '';
     UserInterface.showAddressesList();
   }
 
@@ -258,6 +268,7 @@ const enableZipCode = (zipCode) => {
 
 
 const countryList = select('#country'),
+  tableThead = select('.contact__table--head'),
   addrBookList = select('.contact__table--body'),
   form = select('.form'),
   addBtn = select('.footer__save');
