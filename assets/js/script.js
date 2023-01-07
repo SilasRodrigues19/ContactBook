@@ -214,8 +214,8 @@ class Address {
 
 }
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
     closeModal();
   }
 });
@@ -282,7 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 addBtn.addEventListener('click', e => {
-  form.reset();
   e.preventDefault();
 
   if (e.target.id === 'modal__save') {
@@ -308,6 +307,16 @@ addBtn.addEventListener('click', e => {
     }
   }
 });
+
+let addContact = select('#addContact');
+
+addContact.addEventListener('click', () => {
+  form.reset();
+  select('#modal__actions--buttons').innerHTML = `
+      <button type="submit" class="footer__save" id="modal__save">Salvar</button>
+      <button class="footer__close" onclick="closeModal()">Fechar</button>
+    `;
+})
 
 addrBookList.addEventListener('dblclick', (e) => {
   openModal();
