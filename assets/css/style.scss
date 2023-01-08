@@ -22,6 +22,10 @@
 
 }
 
+html {
+  overflow: overlay;
+}
+
 body {
   min-height: 100vh;
   height: 100%;
@@ -185,7 +189,7 @@ a {
     transform: translateY(ptr(-6));
   }
 
-  &:active &__ront {
+  &:active &__front {
     transform: translateY(ptr(-2));
   }
 
