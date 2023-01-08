@@ -89,7 +89,8 @@ a {
   background: #fff;
   border-radius: 0.6rem;
   overflow: hidden;
-  /* display: none; */
+  height: 45rem;
+  overflow: auto;
   border-radius: 0.5rem;
   box-shadow: 0 ptr(3) ptr(16) 0 rgba($color: $dark-grey, $alpha: 0.2);
   width: 60%;
@@ -190,6 +191,7 @@ a {
 
   &__front {
     display: block;
+    width: 10rem;
     padding: ptr(12) ptr(20);
     border-radius: ptr(12);
     font-size: 1.25rem;
@@ -419,6 +421,7 @@ a {
   .pushable {
 
     &__front {
+      width: 8rem;
       padding: .75rem .55rem;
     }
 
