@@ -115,6 +115,7 @@ a {
     position: absolute;
     right: 1.5rem;
     top: 1rem;
+    margin-top: .3rem;
     @include flexCencerJustify;
     font-size: 1.4rem;
     background: rgba($color: #fff, $alpha: 0.2);
@@ -163,7 +164,7 @@ a {
     }
 
     .error {
-      border: 1px solid #d33c41;
+      border: ptr(1) solid #d33c41;
     }
   }
 }
@@ -171,7 +172,7 @@ a {
 .pushable {
   background: $dark-blue;
   border: none;
-  border-radius: 12px;
+  border-radius: ptr(12);
   padding: 0;
   cursor: pointer;
 
@@ -180,21 +181,21 @@ a {
   }
 
   &:hover &__front {
-    transform: translateY(-6px);
+    transform: translateY(ptr(-6));
   }
 
   &:active &__ront {
-    transform: translateY(-2px);
+    transform: translateY(ptr(-2));
   }
 
   &__front {
     display: block;
-    padding: 12px 20px;
-    border-radius: 12px;
+    padding: ptr(12) ptr(20);
+    border-radius: ptr(12);
     font-size: 1.25rem;
     background: $blue;
     color: white;
-    transform: translateY(-4px);
+    transform: translateY(ptr(-4));
     will-change: transform;
     transition: transform 250ms;
   }
@@ -270,7 +271,7 @@ a {
   padding: 1.4rem;
   margin: 0 auto;
   max-width: ptr(1200);
-  min-width: ptr(700);
+  min-width: ptr(300);
 
   &__icon {
     margin-bottom: -.1rem;
@@ -397,6 +398,16 @@ a {
 @media screen and (max-width: 768px) {
   .modal {
     width: 90%;
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__content {
+      max-height: 35rem;
+      overflow: auto;
+    }
+
   }
 
   .grid {
@@ -404,4 +415,14 @@ a {
       grid-template-columns: repeat(1, 1fr);
     }
   }
+
+  .pushable {
+
+    &__front {
+      padding: .75rem .55rem;
+    }
+
+
+  }
+
 }
