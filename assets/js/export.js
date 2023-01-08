@@ -41,7 +41,7 @@ exportToExcel = () => {
   let tbody = table.querySelector('tbody');
 
   if (tbody.childElementCount === 0) {
-    pushNotify('error', 'Erro', 'Não há dados para exportar!');
+    pushNotify('info', 'Erro', 'Não há dados para exportar!');
     return;
   }
 
