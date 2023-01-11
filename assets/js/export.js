@@ -1,6 +1,7 @@
 
 let myNotify;
 const displayedNotifications = [];
+const NOTIFY_TIMEOUT = 3000;
 
 pushNotify = (status, title, text) => {
   const message = `${title}: ${text}`;
@@ -12,7 +13,7 @@ pushNotify = (status, title, text) => {
 
   setTimeout(() => {
     displayedNotifications.pop();
-  }, 5000);
+  }, NOTIFY_TIMEOUT + 700);
 
   myNotify = new Notify({
     status: `${status}`,
@@ -22,7 +23,7 @@ pushNotify = (status, title, text) => {
     showIcon: true,
     showCloseButton: true,
     autoclose: true,
-    autotimeout: 3000,
+    autotimeout: NOTIFY_TIMEOUT,
     distance: 20,
     type: 1,
   });
