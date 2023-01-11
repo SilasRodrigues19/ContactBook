@@ -74,7 +74,12 @@ class UserInterface {
   static showAddressesList() {
     const addresses = Address.getAddresses();
 
-    tableThead.innerHTML = "<p class='no__contacts'>Não há contatos a serem exibidos</p>";
+    tableThead.innerHTML = `
+      <div class='no__contacts'>
+        <p>Não há cadastros salvos. Cadastre o primeiro</p>
+        <iconify-icon class='addIcon' icon='ic:round-person-add-alt' onclick="openModal()"></iconify-icon>
+      </div>
+    `;
 
     addresses.forEach((address) => UserInterface.addAddressList(address));
   }
@@ -312,9 +317,9 @@ addBtn.addEventListener('click', e => {
 
       const addressItem = new Address(lastItemId, addrName, firstName, lastName, email, phone, streetAddr, postCode, city, country, labels);
       Address.addAddress(addressItem);
-      location.reload();
       UserInterface.addAddressList(addressItem);
       form.reset();
+      closeModal();
     }
   }
 });
@@ -390,7 +395,6 @@ handleUpdate = (id, event) => {
     Address.updateAddress(addressItem);
     closeModal();
     form.reset();
-    location.reload();
   }
     
 };
