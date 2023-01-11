@@ -1,7 +1,7 @@
-@mixin flexCenterOptionallyCol($flexDirection: row) {
+@mixin flexCenterOptionallyCol($flexDirection: row, $align-items: center) {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: $align-items;
     flex-direction: $flexDirection;
 }
 
